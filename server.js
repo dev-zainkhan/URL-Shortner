@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
     <p class="lede">Paste a long address below. Get back a short tracking code that redirects anywhere, instantly.</p>
 
     <form action="/shorten" method="POST" class="form">
-      <label for="long_url">Destination URL</label>
+      <label for="long_url">destination URL</label>
       <input type="url" id="long_url" name="long_url" placeholder="https://example.com/a/very/long/path" required>
       <button type="submit">Create short link</button>
     </form>
