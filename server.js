@@ -1,9 +1,9 @@
 const express = require('express');
-const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 const { shortenUrl, resolveShortCode } = require('./urlService');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
 app.use(express.urlencoded({ extended: true }));
 
