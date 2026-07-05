@@ -1,4 +1,5 @@
 const express = require('express');
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 const { shortenUrl, resolveShortCode } = require('./urlService');
 
 const app = express();
@@ -27,9 +28,11 @@ app.post('/shorten', async (req, res) => {
 
   try {
     const result = await shortenUrl(long_url);
+    const shortUrl = `${BASE_URL}/${result.shortCode}`;
     res.send(`
-      <p>Short code: <b>${result.shortCode}</b></p>
-      <p>Visit it: <a href="/${result.shortCode}">/${result.shortCode}</a></p>
+      <p>Your short link — click the box to select it, then Ctrl+C to copy:</p>
+      <p><input type="text" value="${shortUrl}" readonly onclick="this.select()" style="width:320px; padding:6px; font-size:14px;"></p>
+      <p><a href="${shortUrl}" target="_blank">Open it in a new tab</a></p>
       <p><a href="/">Back</a></p>
     `);
   } catch (err) {
